@@ -25,7 +25,7 @@ function ToolsSection({imageSrc}){
                 Lorem ipsum dolor sit amet, consectetur adipisci elit
               </p>
 
-              <h4 className='py-4 text-teal-600'>Design tools I use</h4>
+              <h4 className='py-4 text-[color:var(--primary)]'>Design tools I use</h4>
               <p className='text-gray-400 py-1'>Photoshop</p>
               <p className='text-gray-400 py-1'>Illustrator</p>
               <p className='text-gray-400 py-1'>After Effect</p>
@@ -38,7 +38,7 @@ function ToolsSection({imageSrc}){
                 Lorem ipsum dolor sit amet, consectetur adipisci elit
               </p>
 
-              <h4 className='py-4 text-teal-600'>Design tools I use</h4>
+              <h4 className='py-4 text-[color:var(--primary)]'>Design tools I use</h4>
               <p className='text-gray-400 py-1'>Photoshop</p>
               <p className='text-gray-400 py-1'>Illustrator</p>
               <p className='text-gray-400 py-1'>After Effect</p>
@@ -51,7 +51,7 @@ function ToolsSection({imageSrc}){
                 Lorem ipsum dolor sit amet, consectetur adipisci elit
               </p>
 
-              <h4 className='py-4 text-teal-600'>Design tools I use</h4>
+              <h4 className='py-4 text-[color:var(--primary)]'>Design tools I use</h4>
               <p className='text-gray-400 py-1'>Photoshop</p>
               <p className='text-gray-400 py-1'>Illustrator</p>
               <p className='text-gray-400 py-1'>After Effect</p>
