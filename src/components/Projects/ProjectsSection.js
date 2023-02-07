@@ -1,13 +1,5 @@
-import Image from "next/image"
-
-import web2 from '../../../public/web2.png'
-import web1 from '../../../public/web1.png'
-import web3 from '../../../public/web3.png'
-import web4 from '../../../public/web4.png'
-import web5 from '../../../public/web5.png'
-import web6 from '../../../public/web6.png'
-
 import ProjectCard from "./ProjectCard"
+import Projects from "../../../public/data/Projects.json"
 
 function ProjectSection(){
     return (
@@ -20,14 +12,9 @@ function ProjectSection(){
           </div>
 
           <div className='flex flex-col gap-10 py-10 lg:flex-row lg:flex-wrap justify-center'>
-            <ProjectCard/>
-            <ProjectCard/>
-            <ProjectCard/>
-            <ProjectCard/>
-            <ProjectCard/>
-            <ProjectCard/>
-            <ProjectCard/>
-            <ProjectCard/>
+            {
+              Projects.map((project, id) => <ProjectCard project={project} key={id}/>)
+            }
           </div>
 
         </section>
