@@ -11,7 +11,7 @@ function ProjectSection({openModal}){
             </p>
           </div>
 
-          <div className='flex flex-col gap-10 py-10 lg:flex-row lg:flex-wrap justify-center'>
+          <div className='flex gap-10 py-10 flex-row flex-wrap justify-center align-middle'>
             {
               Projects.map((project, id) => <ProjectCard project={project} openModal = {openModal} key={id}/>)
             }
