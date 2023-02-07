@@ -3,7 +3,7 @@ import { setHue } from "@/utils/ColorChanger";
 
 function NavBar(){
     return (
-    <nav className='py-10 mb-12 flex justify-between'>
+    <nav className='py-10 mb-12 flex justify-between text-white'>
     <h1 className='text-xl'>
       developed by
     </h1>

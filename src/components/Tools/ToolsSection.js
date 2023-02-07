@@ -2,9 +2,9 @@
 import ToolCard from "./ToolCard"
 import Tools from '../../../public/data/Tools.json'
 
-function ToolsSection({imageSrc}){
+function ToolsSection(){
     return (
-        <section>
+        <section className="text-white">
           <div>
             <h3 className='text-3xl py-1 text-center '>
               Tools I use

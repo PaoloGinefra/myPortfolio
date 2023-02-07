@@ -3,7 +3,7 @@ import Projects from "../../../public/data/Projects.json"
 
 function ProjectSection({openModal}){
     return (
-        <section>
+        <section className="text-white">
           <div>
             <h3 className='text-3xl py-1 text-center pt-10'>Projects</h3>
             <p className='text-md py-2 leading-8 text-gray-400'>
