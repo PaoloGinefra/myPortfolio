@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import BackDrop from "./BackDrop";
+import TestMdx from '../../../../public/ProjectsPages/test.mdx'
 
 const dropIn = {
     hidden: {
@@ -32,9 +33,10 @@ const ProjectModal = ({handleClose, text}) => {
                 animate='visible'
                 exit='exit'
             >
-            <p className="p-3 text-gray-700">
-                {text}
-            </p>
+
+            <div className="prose p-5">
+                <TestMdx/>
+            </div>
 
             </motion.div>
         </BackDrop>
