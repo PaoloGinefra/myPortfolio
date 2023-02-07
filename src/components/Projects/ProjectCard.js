@@ -5,17 +5,26 @@ import Tools from "../../../public/data/Tools.json"
 
 import { AiOutlineGithub } from "react-icons/ai"
 
+import { motion } from "framer-motion";
 
-function ProjectCard({project}){
+
+function ProjectCard({project, openModal}){
     return (
-        <div className="relative bg-slate-300 max-w-sm rounded-2xl overflow-hidden">
-            
+        <motion.div
+            className="relative bg-slate-300 max-w-sm rounded-2xl overflow-hidden cursor-pointer"
+            onClick={openModal}
+            whileHover = {{scale:1.05}}
+            whileTap = {{scale:0.95}}
+        >
             <div className="rounded-2xl overflow-hidden">
                 <Image className='w-full' src={project.CoverSrc} alt="Project Cover" width={1000} height = {1000}/>
             </div>
 
             <div className="px-6 py-4">
-                <div className="font-bold text-xl mb-2">{project.Name}</div>
+                <div className="font-bold text-xl mb-2">
+                    {project.Name}
+                </div>
+
                 <p className="text-gray-700 text-base">
                     {project.Description}
                 </p>
@@ -43,7 +52,7 @@ function ProjectCard({project}){
                 </a>)
                 }
             </div>
-        </div>
+        </motion.div>
     )
 }
 

@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import deved from "../../public/dev-ed-wave.png"
-
 import NavBar from '@/components/NavBar'
 import Name from '@/components/Name'
 import Title from '@/components/Title/Title'
@@ -9,8 +8,17 @@ import IconLinks from '@/components/IconLinks'
 import Avatar from '@/components/Avatar'
 import ToolsSection from '@/components/Tools/ToolsSection'
 import ProjectSection from '@/components/Projects/ProjectsSection'
+import ProjectModal from '@/components/Projects/ProjectModal/ProjectModal'
+
+import { useState } from 'react'
+import { AnimatePresence } from 'framer-motion'
 
 export default function Home() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const closeModal = () => setModalOpen(false);
+  const openModal = () => {setModalOpen(true);};
+
+
   return (
     <>
       <Head>
@@ -39,7 +47,16 @@ export default function Home() {
 
         <ToolsSection/>
 
-        <ProjectSection/>
+        <ProjectSection openModal={openModal}/>
+
+        <AnimatePresence 
+          initial={false}
+          mode = {'wait'}
+          onExitComplete={() => null}
+          >
+          {modalOpen && <ProjectModal modalOpen={modalOpen} handleClose={closeModal} text = 'Suuuuus'/>}
+        </AnimatePresence>
+
 
       </main>
     </>
