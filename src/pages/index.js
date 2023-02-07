@@ -10,7 +10,7 @@ import ToolsSection from '@/components/Tools/ToolsSection'
 import ProjectSection from '@/components/Projects/ProjectsSection'
 import ProjectModal from '@/components/Projects/ProjectModal/ProjectModal'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { AnimatePresence } from 'framer-motion'
 
 export default function Home() {
@@ -18,6 +18,10 @@ export default function Home() {
   const closeModal = () => setModalOpen(false);
   const openModal = () => {setModalOpen(true);};
 
+  //Stop scrolling when Modal is Open
+  useEffect(() => {
+    modalOpen ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'unset';
+  }, [modalOpen])
 
   return (
     <>
