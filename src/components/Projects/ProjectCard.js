@@ -8,11 +8,14 @@ import { AiOutlineGithub } from "react-icons/ai"
 import { motion } from "framer-motion";
 
 
-function ProjectCard({project, openModal}){
+function ProjectCard({project, post, setPost, openModal}){
     return (
         <motion.div
             className="relative bg-slate-300 max-w-sm rounded-2xl overflow-hidden cursor-pointer"
-            onClick={openModal}
+            onClick={() => {
+                openModal();
+                setPost(post);
+            }}
             whileHover = {{scale:1.05}}
             whileTap = {{scale:0.95}}
         >
@@ -22,7 +25,7 @@ function ProjectCard({project, openModal}){
 
             <div className="px-6 py-4">
                 <div className="font-bold text-xl mb-2">
-                    {project.Name}
+                    {post.meta.data.title}
                 </div>
 
                 <p className="text-gray-700 text-base">

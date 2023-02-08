@@ -1,7 +1,7 @@
 import ProjectCard from "./ProjectCard"
 import Projects from "../../../public/data/Projects.json"
 
-function ProjectSection({openModal}){
+function ProjectSection({posts, openModal, setPost}){
     return (
         <section className="text-white">
           <div>
@@ -13,7 +13,7 @@ function ProjectSection({openModal}){
 
           <div className='flex gap-10 py-10 flex-row flex-wrap justify-center align-middle'>
             {
-              Projects.map((project, id) => <ProjectCard project={project} openModal = {openModal} key={id}/>)
+              posts.map((post) => <ProjectCard post={post} project={Projects[0]} openModal = {openModal} setPost = {setPost} key={post.slug}/>)
             }
           </div>
 

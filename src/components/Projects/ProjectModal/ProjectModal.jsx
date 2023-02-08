@@ -1,6 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { motion } from "framer-motion";
 import BackDrop from "./BackDrop";
-import TestMdx from '../../../../public/ProjectsPages/test.mdx'
+import { useState, useEffect } from "react";
+import {serialize} from 'next-mdx-remote/serialize'
+import { MDXRemote } from "next-mdx-remote";
 
 const dropIn = {
     hidden: {
@@ -22,7 +25,25 @@ const dropIn = {
     },
 };
 
-const ProjectModal = ({handleClose, text}) => {
+const ProjectModal = ({post, handleClose}) => {
+
+    const [postSource, setPostSource] = useState();
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const mdxSource = await serialize(post.content, {
+                mdxOptions: { development: false },
+              });
+            setPostSource(mdxSource);
+          }
+
+        fetchData()
+          .catch(console.error);
+        
+    }, []);
+
+    console.log(postSource)
+
     return (
         <BackDrop onClick={handleClose}>
             <motion.div
@@ -35,7 +56,7 @@ const ProjectModal = ({handleClose, text}) => {
             >
 
             <div className="prose p-5">
-                <TestMdx/>
+                {postSource && (<MDXRemote {...postSource}/>)}
             </div>
 
             </motion.div>

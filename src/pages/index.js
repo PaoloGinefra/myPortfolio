@@ -12,9 +12,12 @@ import ProjectModal from '@/components/Projects/ProjectModal/ProjectModal'
 
 import { useState, useEffect } from 'react'
 import { AnimatePresence } from 'framer-motion'
+import { GetStaticProps } from 'next'
+import { getAllPosts } from './api/posts'
 
-export default function Home() {
+export default function Home({posts}) {
   const [modalOpen, setModalOpen] = useState(false);
+  const [selectedPost, setSelectedPost] = useState({});
   const closeModal = () => setModalOpen(false);
   const openModal = () => {setModalOpen(true);};
 
@@ -22,6 +25,7 @@ export default function Home() {
   useEffect(() => {
     modalOpen ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'unset';
   }, [modalOpen])
+
 
   return (
     <>
@@ -51,18 +55,30 @@ export default function Home() {
 
         <ToolsSection/>
 
-        <ProjectSection openModal={openModal}/>
+        <ProjectSection posts={posts} openModal={openModal} setPost = {setSelectedPost}/>
 
         <AnimatePresence 
           initial={false}
           mode = {'wait'}
           onExitComplete={() => null}
           >
-          {modalOpen && <ProjectModal modalOpen={modalOpen} handleClose={closeModal} text = 'Suuuuus'/>}
+          {modalOpen && <ProjectModal modalOpen={modalOpen} handleClose={closeModal} post = {selectedPost}/>}
         </AnimatePresence>
 
 
       </main>
     </>
   )
+}
+
+
+
+export async function getStaticProps(context){
+  const posts = getAllPosts();
+
+  return {
+    props:{
+      posts
+    },
+  };
 }
