@@ -13,7 +13,7 @@ function ProjectSection({posts, openModal, setPost}){
 
           <div className='flex gap-10 py-10 flex-row flex-wrap justify-center align-middle'>
             {
-              posts.map((post) => <ProjectCard post={post} project={Projects[0]} openModal = {openModal} setPost = {setPost} key={post.slug}/>)
+              posts.map((post) => <ProjectCard post={post} project={Projects[0]} openModal = {openModal} setPost = {setPost} key={post.meta.slug}/>)
             }
           </div>
 

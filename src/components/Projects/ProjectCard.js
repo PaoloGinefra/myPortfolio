@@ -37,7 +37,7 @@ function ProjectCard({project, post, setPost, openModal}){
                 {
                     project.Tools.map((toolName) => {
                         var tools = Tools.filter( (genericTool) => genericTool.Name === toolName);
-                        return tools.map((tool, id) => <ToolTag tool = {tool} key = {id}/>);
+                        return tools.map((tool) => <ToolTag tool = {tool} key = {tool.Name + post.meta.slug}/>);
                     })
                 }
             </div>
