@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-key */
 import ToolCard from "./ToolCard"
 import Tools from '../../../public/data/Tools.json'
 
@@ -14,7 +13,7 @@ function ToolsSection(){
 
           <div className='flex flex-wrap gap-16 justify-center flex-grow-0'>
             {Tools.map((tool) => {
-                return <ToolCard title={tool.Name} imgSrc={tool.ImgSrc} status={'Advanced'}/>
+                return <ToolCard key={tool.Name} title={tool.Name} imgSrc={tool.ImgSrc} status={'Advanced'}/>
               })}
 
           </div>
