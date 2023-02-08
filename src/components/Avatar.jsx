@@ -2,7 +2,7 @@ import Image from "next/image"
 
 function Avatar({imageSrc}){
     return (
-        <div className='relative mx-auto bg-gradient-to-b from-[color:var(--primary)] rounded-full w-80 h-80 mt-20 overflow-hidden md:h-96 md:w-96'>
+        <div className='relative lg:w-80 w-[50vw] aspect-square mx-auto bg-gradient-to-b from-[color:var(--primary)] rounded-full mt-20 overflow-hidden'>
             <Image src = {imageSrc} alt='ME'/>
       </div>
     )
