@@ -20,7 +20,7 @@ function ProjectCard({project, setProject, openModal}){
             whileTap = {{scale:0.95}}
         >
             <div className="rounded-2xl overflow-hidden">
-                <Image className='w-full' src={project.data.coverSrc} alt="Project Cover" width={1000} height = {1000}/>
+                <Image className='w-full' src={project.data.coverSrc} alt="Project Cover" width={500} height = {500}/>
             </div>
 
             <div className="px-6 py-4">
