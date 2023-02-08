@@ -2,7 +2,7 @@ import {AiFillTwitterCircle, AiFillLinkedin, AiFillInstagram, AiFillYoutube, AiF
 
 function IconLinks(){
     return (
-        <div className='text-5xl flex justify-center gap-16 py-2 text-gray-200'>
+        <div className='text-5xl flex justify-center gap-16 py-2 text-gray-200 flex-wrap'>
             <a href="https://github.com/PaoloGinefra" target="_blank" rel="noopener noreferrer"><AiFillGithub /></a>
             <a href="https://twitter.com/PaoloGinefra" target="_blank" rel="noopener noreferrer"><AiFillTwitterCircle /></a>
             <a href="https://www.instagram.com/paolo_ginefra/" target="_blank" rel="noopener noreferrer"><AiFillInstagram /></a>
