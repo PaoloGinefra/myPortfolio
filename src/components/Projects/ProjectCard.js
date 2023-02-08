@@ -19,8 +19,8 @@ function ProjectCard({project, setProject, openModal}){
             whileHover = {{scale:1.05}}
             whileTap = {{scale:0.95}}
         >
-            <div className="rounded-2xl overflow-hidden">
-                <Image className='w-full' src={project.data.coverSrc} alt="Project Cover" width={500} height = {500}/>
+            <div className="rounded-2xl w-fit aspect-[4/3] overflow-hidden flex">
+                <Image className='w-full object-cover' src={project.data.coverSrc} alt="Project Cover" width={500} height ={500}/>
             </div>
 
             <div className="px-6 py-4">
@@ -28,7 +28,7 @@ function ProjectCard({project, setProject, openModal}){
                     {project.data.title}
                 </div>
 
-                <p className="text-gray-700 text-base">
+                <p className="text-gray-700 text-base w-fit aspect-video overflow-clip">
                     {project.data.cardDescription}
                 </p>
             </div>
