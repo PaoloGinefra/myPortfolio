@@ -49,8 +49,8 @@ function ProjectCard({project, setProject, openModal}){
             </div>
 
             <div className="absolute text-5xl right-0 top-0 p-2 filter brightness-0">
-                { project.GitHubLink && (
-                <a href= {project.GitHubLink} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
+                { project.data.gitHubLink && (
+                <a href= {project.data.gitHubLink} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
                     <AiOutlineGithub className="" colr='black'/>
                 </a>)
                 }
