@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+"use client";
 import { motion } from "framer-motion";
 import BackDrop from "./BackDrop";
 import { useState, useEffect } from "react";
