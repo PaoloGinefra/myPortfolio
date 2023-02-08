@@ -43,8 +43,6 @@ const ProjectModal = ({post, handleClose}) => {
         
     }, []);
 
-    console.log(postSource)
-
     return (
         <BackDrop onClick={handleClose}>
             <motion.div

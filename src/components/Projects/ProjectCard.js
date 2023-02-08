@@ -8,43 +8,43 @@ import { AiOutlineGithub } from "react-icons/ai"
 import { motion } from "framer-motion";
 
 
-function ProjectCard({project, post, setPost, openModal}){
+function ProjectCard({project, setProject, openModal}){
     return (
         <motion.div
             className="relative bg-slate-300 max-w-sm rounded-2xl overflow-hidden cursor-pointer"
             onClick={() => {
                 openModal();
-                setPost(post);
+                setProject(project);
             }}
             whileHover = {{scale:1.05}}
             whileTap = {{scale:0.95}}
         >
             <div className="rounded-2xl overflow-hidden">
-                <Image className='w-full' src={project.CoverSrc} alt="Project Cover" width={1000} height = {1000}/>
+                <Image className='w-full' src={project.data.coverSrc} alt="Project Cover" width={1000} height = {1000}/>
             </div>
 
             <div className="px-6 py-4">
                 <div className="font-bold text-xl mb-2">
-                    {post.meta.data.title}
+                    {project.data.title}
                 </div>
 
                 <p className="text-gray-700 text-base">
-                    {project.Description}
+                    {project.data.cardDescription}
                 </p>
             </div>
 
             <div className="px-6 pt-0">
                 {
-                    project.Tools.map((toolName) => {
+                    project.data.tools.map((toolName) => {
                         var tools = Tools.filter( (genericTool) => genericTool.Name === toolName);
-                        return tools.map((tool) => <ToolTag tool = {tool} key = {tool.Name + post.meta.slug}/>);
+                        return tools.map((tool) => <ToolTag tool = {tool} key = {tool.Name}/>);
                     })
                 }
             </div>
 
             <div className="px-6 pt-4 pb-2">
                 {
-                    project.Tags.map((tag, id) => <Tag tag = {tag} key={id}/>)
+                    project.data.tags.map((tag, id) => <Tag tag = {tag} key={id}/>)
                 }
             </div>
 

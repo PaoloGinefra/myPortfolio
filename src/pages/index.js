@@ -12,12 +12,11 @@ import ProjectModal from '@/components/Projects/ProjectModal/ProjectModal'
 
 import { useState, useEffect } from 'react'
 import { AnimatePresence } from 'framer-motion'
-import { GetStaticProps } from 'next'
-import { getAllPosts } from './api/posts'
+import { getAllProjects } from './api/getProjects'
 
-export default function Home({posts}) {
+export default function Home({projects}) {
   const [modalOpen, setModalOpen] = useState(false);
-  const [selectedPost, setSelectedPost] = useState({});
+  const [selectedProject, setSelectedProject] = useState({});
   const closeModal = () => setModalOpen(false);
   const openModal = () => {setModalOpen(true);};
 
@@ -55,14 +54,14 @@ export default function Home({posts}) {
 
         <ToolsSection/>
 
-        <ProjectSection posts={posts} openModal={openModal} setPost = {setSelectedPost}/>
+        <ProjectSection projects={projects} openModal={openModal} setProject = {setSelectedProject}/>
 
         <AnimatePresence 
           initial={false}
           mode = {'wait'}
           onExitComplete={() => null}
           >
-          {modalOpen && <ProjectModal modalOpen={modalOpen} handleClose={closeModal} post = {selectedPost}/>}
+          {modalOpen && <ProjectModal modalOpen={modalOpen} handleClose={closeModal} post = {selectedProject}/>}
         </AnimatePresence>
 
 
@@ -74,11 +73,11 @@ export default function Home({posts}) {
 
 
 export async function getStaticProps(context){
-  const posts = getAllPosts();
+  const projects = getAllProjects();
 
   return {
     props:{
-      posts
+      projects
     },
   };
 }
