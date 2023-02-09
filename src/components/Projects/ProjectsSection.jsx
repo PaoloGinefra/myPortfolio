@@ -2,6 +2,7 @@ import ProjectCard from "./ProjectCard"
 import ToolsSection from "../Tools/ToolsSection";
 import Tools from '../../../public/data/Tools.json'
 import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
 
 function ProjectSection({projects, openModal, setProject}){
   const [SelectedTools, setSelectedTools] = useState(Tools.map(tool => tool.Selected));
@@ -30,7 +31,14 @@ function ProjectSection({projects, openModal, setProject}){
                 const id = Tools.find(tool => tool.Name === toolName).id
                 return SelectedTools[id]
               });
-              return render && (<ProjectCard project={project} openModal = {openModal} setProject = {setProject} key={project.slug}/>)
+              return <AnimatePresence key ={project.data.title}
+                initial={false}
+                mode = {'wait'}
+                onExitComplete={() => null}>
+                {
+                  render && (<ProjectCard project={project} openModal = {openModal} setProject = {setProject} key={project.slug}/>)
+                }
+              </AnimatePresence>
               }
             )
           }

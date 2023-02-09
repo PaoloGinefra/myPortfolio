@@ -7,6 +7,27 @@ import { AiOutlineGithub } from "react-icons/ai"
 
 import { motion } from "framer-motion";
 
+const variants = {
+    hover:{
+        scale: 1.05
+    },
+    tap: {
+        scale: 0.95
+    },
+    hidden:{
+        scale:0,
+    },
+    visible: {
+        scale:1,
+        transition: {
+            duration: 0.1,
+            type: "spring",
+            damping: 25,
+            stiffness: 500
+        }
+    }
+}
+
 
 function ProjectCard({project, setProject, openModal}){
     return (
@@ -16,8 +37,12 @@ function ProjectCard({project, setProject, openModal}){
                 openModal();
                 setProject(project);
             }}
-            whileHover = {{scale:1.05}}
-            whileTap = {{scale:0.95}}
+            initial={'hidden'}
+            animate={'visible'}
+            exit={'hidden'}
+            whileHover = {'hover'}
+            whileTap = {'tap'}
+            variants = {variants}
         >
             <div className="rounded-2xl w-fit aspect-[4/3] overflow-hidden flex">
                 <Image className='w-full object-cover' src={project.data.coverSrc} alt="Project Cover" width={500} height ={500}/>
