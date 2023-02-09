@@ -6,7 +6,6 @@ import Title from '@/components/Title/Title'
 import TitleDescription from '@/components/Title/TitleDescription'
 import IconLinks from '@/components/IconLinks'
 import Avatar from '@/components/Avatar'
-import ToolsSection from '@/components/Tools/ToolsSection'
 import ProjectSection from '@/components/Projects/ProjectsSection'
 import ProjectModal from '@/components/Projects/ProjectModal/ProjectModal'
 
@@ -51,8 +50,6 @@ export default function Home({projects}) {
          <Avatar imageSrc={deved}/>
 
         </section>
-
-        <ToolsSection/>
 
         <ProjectSection projects={projects} openModal={openModal} setProject = {setSelectedProject}/>
 
