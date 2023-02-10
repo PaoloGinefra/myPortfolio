@@ -26,10 +26,13 @@ function ProjectSection({projects, tags, openModal, setProject}){
   useEffect(() => {
     const {toolsHex, tagsHex, verbose} = router.query;
 
-    setSelectedTools(arrayFromHex(toolsHex, Tools.length));
+    if(toolsHex)
+      setSelectedTools(arrayFromHex(toolsHex, Tools.length));
 
-    const tagsArray = arrayFromHex(tagsHex, tags.length)
-    setSelectedTags(Object.assign(...tags.map((tag, i) => ({ [tag]: tagsArray[i] }))))
+    if(tagsHex){
+      const tagsArray = arrayFromHex(tagsHex, tags.length)
+      setSelectedTags(Object.assign(...tags.map((tag, i) => ({ [tag]: tagsArray[i] }))))
+    }
 
     setVerbose(verbose != undefined)
   }, [router, tags])
@@ -78,7 +81,7 @@ function ProjectSection({projects, tags, openModal, setProject}){
           render && (
             <VerticalTimelineElement
             contentStyle={{ background: 'rgba(0, 0, 0, 0)', boxShadow: '0px 0px', padding:0}}
-            contentArrowStyle={{ borderRight: '7px solid  var(--primary)' }}
+            contentArrowStyle={{ borderRight: '7px solid  var(--primary)'}}
             date={project.data.date}
             iconStyle={{ background: 'var(--primary)'}}
             >
@@ -93,7 +96,7 @@ function ProjectSection({projects, tags, openModal, setProject}){
       projectsArray.push(<VerticalTimelineElement
         key={'empty__'}
         contentStyle={{ background: 'rgba(0, 0, 0, 0)', boxShadow: '0px 0px', padding:0}}
-        contentArrowStyle={{ borderRight: '7px solid  gray' }}
+        contentArrowStyle={{ borderRight: '10px solid  gray' }}
         iconStyle={{ background: 'gray'}}>
         <EmptySelection/>
       </VerticalTimelineElement>)
