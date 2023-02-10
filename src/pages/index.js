@@ -6,7 +6,6 @@ import Title from '@/components/Title/Title'
 import TitleDescription from '@/components/Title/TitleDescription'
 import IconLinks from '@/components/IconLinks'
 import Avatar from '@/components/Avatar'
-import ToolsSection from '@/components/Tools/ToolsSection'
 import ProjectSection from '@/components/Projects/ProjectsSection'
 import ProjectModal from '@/components/Projects/ProjectModal/ProjectModal'
 
@@ -14,7 +13,9 @@ import { useState, useEffect } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import { getAllProjects } from './api/getProjects'
 
-export default function Home({projects}) {
+import { useRouter } from 'next/router'
+
+export default function Home({projects, tags}) {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState({});
   const closeModal = () => setModalOpen(false);
@@ -24,7 +25,6 @@ export default function Home({projects}) {
   useEffect(() => {
     modalOpen ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'unset';
   }, [modalOpen])
-
 
   return (
     <>
@@ -50,11 +50,10 @@ export default function Home({projects}) {
 
          <Avatar imageSrc={deved}/>
 
+
         </section>
 
-        <ToolsSection/>
-
-        <ProjectSection projects={projects} openModal={openModal} setProject = {setSelectedProject}/>
+        <ProjectSection projects={projects} tags={tags} openModal={openModal} setProject = {setSelectedProject}/>
 
         <AnimatePresence 
           initial={false}
@@ -71,13 +70,18 @@ export default function Home({projects}) {
 }
 
 
-
 export async function getStaticProps(context){
   const projects = getAllProjects();
 
+  const tags = new Set();
+  projects.forEach(project => {
+    project.data.tags.forEach(tag => tags.add(tag))
+  })
+    
   return {
     props:{
-      projects
+      projects,
+      tags: Array.from(tags)
     },
   };
 }
