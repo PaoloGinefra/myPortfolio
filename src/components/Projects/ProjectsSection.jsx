@@ -10,6 +10,9 @@ import { AnimatePresence } from "framer-motion";
 import { useRouter } from 'next/router'
 import { arrayFromHex, HexFromArray } from "@/utils/querySelectionParser";
 
+import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
+import 'react-vertical-timeline-component/style.min.css';
+
 
 function ProjectSection({projects, tags, openModal, setProject}){
 
@@ -47,7 +50,7 @@ function ProjectSection({projects, tags, openModal, setProject}){
 
     if(Verbose)
       console.log('tagsHex=' + HexFromArray(Object.values(SelectedTags)))
-      
+
     return SelectedTags[tag]
   }
 
@@ -66,19 +69,34 @@ function ProjectSection({projects, tags, openModal, setProject}){
 
       empty = !render && empty;
 
-      return <AnimatePresence key ={project.data.title}
+      return <AnimatePresence
+        key ={project.data.title}
         initial={false}
         mode = {'wait'}
         onExitComplete={() => null}>
         {
-          render && (<ProjectCard project={project} openModal = {openModal} setProject = {setProject} key={project.slug}/>)
+          render && (
+            <VerticalTimelineElement
+            contentStyle={{ background: 'rgba(0, 0, 0, 0)', boxShadow: '0px 0px'}}
+            contentArrowStyle={{ borderRight: '7px solid  var(--primary)' }}
+            date={project.data.date}
+            iconStyle={{ background: 'var(--primary)'}}
+            >
+              <ProjectCard project={project} openModal = {openModal} setProject = {setProject} key={project.slug}/>
+            </VerticalTimelineElement>)
         }
-      </AnimatePresence>
+        </AnimatePresence>
       }
     )
 
     if(empty)
-      projectsArray.push(<EmptySelection key={'empty__'}/>)
+      projectsArray.push(<VerticalTimelineElement
+        key={'empty__'}
+        contentStyle={{ background: 'rgba(0, 0, 0, 0)', boxShadow: '0px 0px'}}
+        contentArrowStyle={{ borderRight: '7px solid  gray' }}
+        iconStyle={{ background: 'gray'}}>
+        <EmptySelection/>
+      </VerticalTimelineElement>)
 
     return projectsArray
   }
@@ -101,9 +119,9 @@ function ProjectSection({projects, tags, openModal, setProject}){
 
         <Divider/>
 
-        <div className='flex gap-10 py-10 flex-row flex-wrap justify-center align-middle'>
-          { projectsToRender()}
-        </div>
+          <VerticalTimeline>
+            { projectsToRender()}
+          </VerticalTimeline>
 
       </section>
     </>
