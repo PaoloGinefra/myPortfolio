@@ -12,7 +12,7 @@ function ToolCard({tool, toggleSelectTool}){
     const [Selected, setSelected] = useState(tool.Selected);
     return(
         <motion.div
-        className="flex flex-col max-w-[20vmax] mt-10 relative"
+        className="flex flex-col max-w-[6rem] md:max-w-[8rem] mt-10 relative"
         animate={Selected ? "selected" : "notSelected"}
         variants={variants}
         >
