@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Tag from "./Tag";
+import Tag from "../Tag/Tag";
 import ToolTag from "../Tools/ToolTag";
 import Tools from "../../../public/data/Tools.json"
 
@@ -67,7 +67,7 @@ function ProjectCard({project, setProject, openModal}){
                 }
             </div>
 
-            <div className="px-6 pt-4 pb-2">
+            <div className="px-5 mb-5 flex gap-2">
                 {
                     project.data.tags.map((tag, id) => <Tag tag = {tag} key={id}/>)
                 }

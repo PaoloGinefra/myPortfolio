@@ -1,6 +1,7 @@
 import ProjectCard from "./ProjectCard"
 import ToolsSection from "../Tools/ToolsSection"
 import Tools from '../../../public/data/Tools.json'
+import TagsSection from "../Tag/TagsSection";
 import EmptySelection from "./EmptySlection";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
@@ -25,6 +26,7 @@ function ProjectSection({projects, openModal, setProject}){
 
       <ToolsSection toggleSelectTool= {toggleSelectTool}/>
 
+      <TagsSection/>
 
         <div className='flex gap-10 py-10 flex-row flex-wrap justify-center align-middle'>
           {
