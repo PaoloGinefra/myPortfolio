@@ -13,6 +13,8 @@ import { useState, useEffect } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import { getAllProjects } from './api/getProjects'
 
+import { useRouter } from 'next/router'
+
 export default function Home({projects, tags}) {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState({});
@@ -68,7 +70,6 @@ export default function Home({projects, tags}) {
 }
 
 
-
 export async function getStaticProps(context){
   const projects = getAllProjects();
 
@@ -76,7 +77,7 @@ export async function getStaticProps(context){
   projects.forEach(project => {
     project.data.tags.forEach(tag => tags.add(tag))
   })
-
+    
   return {
     props:{
       projects,

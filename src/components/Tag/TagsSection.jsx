@@ -1,6 +1,6 @@
 import TagSelector from "./TagSelector";
 
-function TagsSection({tags, toggleSelectTag}){
+function TagsSection({tags, toggleSelectTag, SelectedTags}){
     return (
         <section className="text-white mb-3">
           <div>
@@ -12,7 +12,7 @@ function TagsSection({tags, toggleSelectTag}){
 
           <div className='flex flex-wrap gap-3 justify-center flex-grow-0 mt-3'>
             {
-              tags.map(tag => <TagSelector key = {tag} tag={tag} toggleSelectTag={toggleSelectTag}/>)
+              tags.map(tag => <TagSelector key={tag} tag={tag} toggleSelectTag={toggleSelectTag} isSelected={SelectedTags[tag]}/>)
             }
           </div>
         </section>

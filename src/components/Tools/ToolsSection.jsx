@@ -1,7 +1,7 @@
 import ToolCard from "./ToolCard"
 import Tools from '../../../public/data/Tools.json'
 
-function ToolsSection({toggleSelectTool}){
+function ToolsSection({toggleSelectTool, SelectedTools}){
     return (
         <section className="text-white">
           <div>
@@ -13,7 +13,7 @@ function ToolsSection({toggleSelectTool}){
 
           <div className='flex flex-wrap gap-16 justify-center flex-grow-0'>
             {Tools.map((tool) => {
-                return <ToolCard key={tool.Name} tool={tool} toggleSelectTool={toggleSelectTool}/>
+                return <ToolCard key={tool.Name} tool={tool} toggleSelectTool={toggleSelectTool} isSelected={SelectedTools[tool.id]}/>
               })}
 
           </div>

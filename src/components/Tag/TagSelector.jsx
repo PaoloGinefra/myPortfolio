@@ -7,15 +7,13 @@ const variants = {
     notSelected: { opacity: 0.2,},
 }
 
-function TagSelector({tag, toggleSelectTag}){
-    const [Selected, setSelected] = useState(true);
+function TagSelector({tag, toggleSelectTag, isSelected}){
     return (
         <motion.button
         className="group relative"
         variants={variants}
-        animate={Selected ? 'selected': 'notSelected'}
+        animate={isSelected ? 'selected': 'notSelected'}
         onClick = {() => {
-            setSelected(!Selected);
             toggleSelectTag(tag);
         }}
         >
@@ -24,7 +22,7 @@ function TagSelector({tag, toggleSelectTag}){
 
             <div className='absolute overflow-hidden rounded-xl w-full h-full top-0 flex justify-center items-center text-2xl [transform:rotateY(180deg)] [backface-visibility:hidden] group-hover:[transform:rotateY(360deg)] transition-all duration-500'>
                 <div className='absolute w-full h-full bg-[var(--primary)] opacity-80'></div>
-                <p className='absolute'>{Selected ? <BiShow/> : <BiHide/>}</p>
+                <p className='absolute'>{isSelected ? <BiShow/> : <BiHide/>}</p>
             </div>
             
         </motion.button>
