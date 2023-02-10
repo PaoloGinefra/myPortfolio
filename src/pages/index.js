@@ -38,6 +38,9 @@ export default function Home({projects}) {
         <section className=' min-h-screen mb-10'>
           <NavBar/>
 
+         <Avatar imageSrc={deved}/>
+
+
           <Name textColor='text-teal-600'/>
 
           <div className='text-center p-10'>
@@ -47,7 +50,6 @@ export default function Home({projects}) {
 
          <IconLinks/>
 
-         <Avatar imageSrc={deved}/>
 
         </section>
 
