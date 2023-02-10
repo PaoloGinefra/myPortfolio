@@ -77,7 +77,7 @@ function ProjectSection({projects, tags, openModal, setProject}){
         {
           render && (
             <VerticalTimelineElement
-            contentStyle={{ background: 'rgba(0, 0, 0, 0)', boxShadow: '0px 0px'}}
+            contentStyle={{ background: 'rgba(0, 0, 0, 0)', boxShadow: '0px 0px', padding:0}}
             contentArrowStyle={{ borderRight: '7px solid  var(--primary)' }}
             date={project.data.date}
             iconStyle={{ background: 'var(--primary)'}}
@@ -92,7 +92,7 @@ function ProjectSection({projects, tags, openModal, setProject}){
     if(empty)
       projectsArray.push(<VerticalTimelineElement
         key={'empty__'}
-        contentStyle={{ background: 'rgba(0, 0, 0, 0)', boxShadow: '0px 0px'}}
+        contentStyle={{ background: 'rgba(0, 0, 0, 0)', boxShadow: '0px 0px', padding:0}}
         contentArrowStyle={{ borderRight: '7px solid  gray' }}
         iconStyle={{ background: 'gray'}}>
         <EmptySelection/>
