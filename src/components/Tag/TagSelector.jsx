@@ -7,7 +7,7 @@ const variants = {
     notSelected: { opacity: 0.2,},
 }
 
-function TagSelector({tag}){
+function TagSelector({tag, toggleSelectTag}){
     const [Selected, setSelected] = useState(true);
     return (
         <motion.button
@@ -16,6 +16,7 @@ function TagSelector({tag}){
         animate={Selected ? 'selected': 'notSelected'}
         onClick = {() => {
             setSelected(!Selected);
+            toggleSelectTag(tag);
         }}
         >
             <p className="bg-gray-200 rounded-xl px-3 py-1 text-lg font-bold text-gray-700 group-hover:[transform:rotateY(180deg)] transition-all duration-500"

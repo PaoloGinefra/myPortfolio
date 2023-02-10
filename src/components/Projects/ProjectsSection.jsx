@@ -6,12 +6,50 @@ import EmptySelection from "./EmptySlection";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 
-function ProjectSection({projects, openModal, setProject}){
+function ProjectSection({projects, tags, openModal, setProject}){
   const [SelectedTools, setSelectedTools] = useState(Tools.map(tool => tool.Selected));
+  const [SelectedTags, setSelectedTags] = useState(Object.assign(...tags.map(tag => ({ [tag]: true }))))
 
   function toggleSelectTool(id){
     const newSlectedTools = SelectedTools.map((selected, index) => index == id ? !selected : selected)
     setSelectedTools(newSlectedTools)
+  }
+
+  function toggleSelectTag(tag){
+    SelectedTags[tag] = !SelectedTags[tag]
+    setSelectedTags({...SelectedTags})
+  }
+
+  function projectsToRender(){
+    let empty = true;
+
+    const projectsArray = projects.map((project) => {
+      const haveSlectedTool = project.data.tools.some(toolName => {
+        const id = Tools.find(tool => tool.Name === toolName).id
+        return SelectedTools[id]
+      });
+
+      const haveSelectedTag = project.data.tags.some(tag => SelectedTags[tag]);
+
+      const render = (haveSlectedTool && haveSelectedTag);
+
+      empty = !render && empty;
+
+      return <AnimatePresence key ={project.data.title}
+        initial={false}
+        mode = {'wait'}
+        onExitComplete={() => null}>
+        {
+          render && (<ProjectCard project={project} openModal = {openModal} setProject = {setProject} key={project.slug}/>)
+        }
+      </AnimatePresence>
+      }
+    )
+
+    if(empty)
+      projectsArray.push(<EmptySelection key={'empty__'}/>)
+
+    return projectsArray
   }
 
   return (
@@ -26,29 +64,10 @@ function ProjectSection({projects, openModal, setProject}){
 
       <ToolsSection toggleSelectTool= {toggleSelectTool}/>
 
-      <TagsSection/>
+      <TagsSection tags = {tags} toggleSelectTag={toggleSelectTag}/>
 
         <div className='flex gap-10 py-10 flex-row flex-wrap justify-center align-middle'>
-          {
-            projects.map((project) => {
-              const render = project.data.tools.some(toolName => {
-                const id = Tools.find(tool => tool.Name === toolName).id
-                return SelectedTools[id]
-              });
-              return <AnimatePresence key ={project.data.title}
-                initial={false}
-                mode = {'wait'}
-                onExitComplete={() => null}>
-                {
-                  render && (<ProjectCard project={project} openModal = {openModal} setProject = {setProject} key={project.slug}/>)
-                }
-              </AnimatePresence>
-              }
-            )
-          }
-
-          {SelectedTools.every(selectedTool => !selectedTool) && <EmptySelection/>}
-
+          { projectsToRender()}
         </div>
 
       </section>
