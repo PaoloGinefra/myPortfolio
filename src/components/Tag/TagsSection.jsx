@@ -2,7 +2,7 @@ import TagSelector from "./TagSelector";
 
 function TagsSection({tags, toggleSelectTag}){
     return (
-        <section className="text-white">
+        <section className="text-white mb-3">
           <div>
             <h3 className='text-3xl py-1 text-center '>
               Tags
