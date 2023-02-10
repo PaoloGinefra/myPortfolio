@@ -1,6 +1,7 @@
 import ProjectCard from "./ProjectCard"
-import ToolsSection from "../Tools/ToolsSection";
+import ToolsSection from "../Tools/ToolsSection"
 import Tools from '../../../public/data/Tools.json'
+import EmptySelection from "./EmptySlection";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 
@@ -42,6 +43,9 @@ function ProjectSection({projects, openModal, setProject}){
               }
             )
           }
+
+          {SelectedTools.every(selectedTool => !selectedTool) && <EmptySelection/>}
+
         </div>
 
       </section>
