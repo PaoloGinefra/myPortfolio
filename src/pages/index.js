@@ -22,7 +22,7 @@ const TitlesData = Object.values(Titles);
 
 const HueVariants = getHueVariants(TitlesNames, TitlesData);
 
-export default function Home({ projects, tags }) {
+export default function Home({ projects, tagsPerName }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState({});
   const closeModal = () => setModalOpen(false);
@@ -82,7 +82,7 @@ export default function Home({ projects, tags }) {
 
         <ProjectSection
           projects={projects}
-          tags={tags}
+          tags={tagsPerName[TitlesNames[TitleIndex]]}
           openModal={openModal}
           setProject={setSelectedProject}
           currentTitle={TitlesNames[TitleIndex]}
@@ -109,15 +109,23 @@ export default function Home({ projects, tags }) {
 export async function getStaticProps(context) {
   const projects = getAllProjects();
 
-  const tags = new Set();
-  projects.forEach((project) => {
-    project.data.tags.forEach((tag) => tags.add(tag));
+  const tags = {};
+
+  TitlesNames.forEach((name) => {
+    tags[name] = new Set();
+
+    projects.forEach((project) => {
+      if (project.data.categories.some((category) => category == name))
+        project.data.tags.forEach((tag) => tags[name].add(tag));
+    });
+
+    tags[name] = Array.from(tags[name]);
   });
 
   return {
     props: {
       projects,
-      tags: Array.from(tags),
+      tagsPerName: tags,
     },
   };
 }
