@@ -70,9 +70,20 @@ export default function Home({ projects, tagsPerName }) {
               titleUp={incrementTitleIndex}
               titleDown={decrementTitleIndex}
             />
-            <TitleDescription>
-              {Object.values(Titles)[TitleIndex].Description}
-            </TitleDescription>
+
+            <div className="relative w-full h-40 max-w-lg mx-auto my-5">
+              {TitlesNames.map((name, index) => {
+                return (
+                  <AnimatePresence key={name}>
+                    {index == TitleIndex && (
+                      <TitleDescription>
+                        {TitlesData[TitleIndex].Description}
+                      </TitleDescription>
+                    )}
+                  </AnimatePresence>
+                );
+              })}
+            </div>
           </div>
 
           <IconLinks />
