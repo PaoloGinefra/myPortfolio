@@ -32,7 +32,7 @@ const variants = {
 function ProjectCard({project, setProject, openModal}){
     return (
         <motion.div
-            className="relative bg-slate-300 rounded-2xl overflow-hidden cursor-pointer"
+            className="relative bg-slate-300 max-w-md rounded-2xl overflow-hidden cursor-pointer"
             onClick={() => {
                 openModal();
                 setProject(project);
