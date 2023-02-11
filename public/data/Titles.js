@@ -11,6 +11,21 @@ const Titles = {
     hue: 34,
     Description: `Hi there I am a photographer`,
   },
+
+  "Game Developer": {
+    hue: 205,
+    Description: `Hi there I am a game dev`,
+  },
+
+  Student: {
+    hue: 40,
+    Description: `Hi there I am a student`,
+  },
+
+  Maker: {
+    hue: 80,
+    Description: `Hi there I am a maker`,
+  },
 };
 
 export default Titles;

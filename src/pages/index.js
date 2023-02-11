@@ -8,6 +8,7 @@ import IconLinks from "@/components/IconLinks";
 import Avatar from "@/components/Avatar";
 import ProjectSection from "@/components/Projects/ProjectsSection";
 import ProjectModal from "@/components/Projects/ProjectModal/ProjectModal";
+import TitleSection from "@/components/Title/TitleSection";
 
 import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
@@ -39,11 +40,12 @@ export default function Home({ projects, tagsPerName }) {
 
   const [TitleIndex, setTitleIndex] = useState(0);
 
-  const incrementTitleIndex = () =>
-    setTitleIndex((TitleIndex + 1 + TitlesNames.length) % TitlesNames.length);
-
-  const decrementTitleIndex = () =>
-    setTitleIndex((TitleIndex - 1 + TitlesNames.length) % TitlesNames.length);
+  const updateTitleIndex = (delta) => {
+    if (Math.abs(delta) == 1)
+      setTitleIndex(
+        (TitleIndex + delta + TitlesNames.length) % TitlesNames.length
+      );
+  };
 
   return (
     <>
@@ -65,13 +67,13 @@ export default function Home({ projects, tagsPerName }) {
           <Name textColor="text-teal-600" />
 
           <div className="text-center p-10">
-            <TitleName
-              title={Object.keys(Titles)[TitleIndex]}
-              titleUp={incrementTitleIndex}
-              titleDown={decrementTitleIndex}
+            <TitleSection
+              titlesNames={TitlesNames}
+              updateTitle={updateTitleIndex}
+              titleIndex={TitleIndex}
             />
 
-            <div className="relative w-full h-40 max-w-lg mx-auto my-5">
+            <div className="relative w-full h-40 max-w-lg mx-auto mt-5">
               {TitlesNames.map((name, index) => {
                 return (
                   <AnimatePresence key={name}>

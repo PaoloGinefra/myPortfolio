@@ -29,7 +29,7 @@ function ProjectSection({
     Tools.map((tool) => tool.Selected)
   );
   const [SelectedTags, setSelectedTags] = useState(
-    Object.assign(...tags.map((tag) => ({ [tag]: true })))
+    tags ?? Object.assign(...tags.map((tag) => ({ [tag]: true })))
   );
   const [Verbose, setVerbose] = useState(false);
 
