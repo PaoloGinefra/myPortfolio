@@ -3,10 +3,6 @@
 @tailwind utilities;
 
 :root {
-  --primary-hue: 175;
-  --primary-sat: 84%;
-  --primay-light: 40%;
-
   --primary: hsl(var(--primary-hue), var(--primary-sat), var(--primay-light));
   --primary-darkened: hsl(calc(var(--primary-hue) - 10), var(--primary-sat), var(--primay-light));
 }
