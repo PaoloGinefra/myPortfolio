@@ -2,7 +2,6 @@ import Head from "next/head";
 import deved from "../../public/dev-ed-wave.png";
 import NavBar from "@/components/NavBar";
 import Name from "@/components/Name";
-import TitleName from "@/components/Title/TitleName";
 import TitleDescription from "@/components/Title/TitleDescription";
 import IconLinks from "@/components/IconLinks";
 import Avatar from "@/components/Avatar";
@@ -41,10 +40,9 @@ export default function Home({ projects, tagsPerName }) {
   const [TitleIndex, setTitleIndex] = useState(0);
 
   const updateTitleIndex = (delta) => {
-    if (Math.abs(delta) == 1)
-      setTitleIndex(
-        (TitleIndex + delta + TitlesNames.length) % TitlesNames.length
-      );
+    setTitleIndex(
+      (TitleIndex + delta + TitlesNames.length) % TitlesNames.length
+    );
   };
 
   return (
@@ -87,9 +85,7 @@ export default function Home({ projects, tagsPerName }) {
               })}
             </div>
           </div>
-
           <IconLinks />
-
           <Avatar imageSrc={deved} />
         </section>
 
