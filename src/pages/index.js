@@ -10,6 +10,7 @@ import ProjectModal from "@/components/Projects/ProjectModal/ProjectModal";
 import TitleSection from "@/components/Title/TitleSection";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import { AnimatePresence } from "framer-motion";
 import { getAllProjects } from "./api/getProjects";
 import { getHueVariants } from "@/utils/ColorChanger";
@@ -38,6 +39,13 @@ export default function Home({ projects, tagsPerName }) {
   }, [modalOpen]);
 
   const [TitleIndex, setTitleIndex] = useState(0);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    const { titleIndex } = router.query;
+    if (titleIndex != undefined) setTitleIndex(parseInt(titleIndex));
+  }, [router]);
 
   const updateTitleIndex = (delta) => {
     setTitleIndex(
