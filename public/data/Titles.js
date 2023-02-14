@@ -18,7 +18,7 @@ const Titles = {
   },
 
   Student: {
-    hue: 40,
+    hue: 50,
     Description: `Hi there I am a student`,
   },
 
