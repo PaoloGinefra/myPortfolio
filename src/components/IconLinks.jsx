@@ -5,45 +5,44 @@ import {
   AiFillYoutube,
   AiFillGithub,
 } from "react-icons/ai";
+import { motion } from "framer-motion";
+
+function Container({ children, url }) {
+  return (
+    <motion.a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      whileHover={{ scale: 1.2 }}
+      whileTap={{ scale: 0.9 }}
+    >
+      {children}
+    </motion.a>
+  );
+}
 
 function IconLinks() {
   return (
     <div className="text-5xl flex justify-center gap-16 pb-2 text-gray-200 flex-wrap">
-      <a
-        href="https://github.com/PaoloGinefra"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <Container url="https://github.com/PaoloGinefra">
         <AiFillGithub />
-      </a>
-      <a
-        href="https://twitter.com/PaoloGinefra"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      </Container>
+
+      <Container url="https://twitter.com/PaoloGinefra">
         <AiFillTwitterCircle />
-      </a>
-      <a
-        href="https://www.instagram.com/paolo_ginefra/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      </Container>
+
+      <Container url="https://www.instagram.com/paolo_ginefra/">
         <AiFillInstagram />
-      </a>
-      <a
-        href="https://www.youtube.com/channel/UC9tieCBEaNN8EgO5rXio2Kw"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      </Container>
+
+      <Container url="https://www.youtube.com/channel/UC9tieCBEaNN8EgO5rXio2Kw">
         <AiFillYoutube />
-      </a>
-      <a
-        href="https://www.linkedin.com/in/paolo-ginefra/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      </Container>
+
+      <Container url="https://www.linkedin.com/in/paolo-ginefra/">
         <AiFillLinkedin />
-      </a>
+      </Container>
     </div>
   );
 }

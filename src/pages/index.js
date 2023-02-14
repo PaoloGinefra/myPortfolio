@@ -63,7 +63,7 @@ export default function Home({ projects, tagsPerName }) {
       </Head>
 
       <motion.main
-        className="bg-black px-10 md:px-20 lg:px-40"
+        className="relative bg-black px-10 md:px-20 lg:px-40 z-10"
         animate={TitlesNames[TitleIndex]}
         variants={HueVariants}
       >
@@ -97,7 +97,6 @@ export default function Home({ projects, tagsPerName }) {
             </div>
           </div>
           <IconLinks />
-          <Avatar imageSrc={deved} />
         </section>
 
         <ProjectSection

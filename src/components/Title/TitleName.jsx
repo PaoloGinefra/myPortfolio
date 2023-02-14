@@ -70,7 +70,7 @@ function TitleName({
     >
       <motion.div
         onClick={() => updateTitle(delta)}
-        className="text-2xl text-center shadow-xl md:text-3xl text-white w-full px-3 bg-black rounded-2xl border-0 border-[var(--primary)] hover:border-0 hover:text-[var(--primary)] hover:shadow-sm transition duration-500"
+        className="text-2xl text-center md:text-3xl w-full px-3 bg-black rounded-2xl transition duration-500"
         style={getStyle(
           index,
           motionIndex,
