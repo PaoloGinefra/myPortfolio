@@ -72,11 +72,14 @@ export default function Home({ projects, tagsPerName }) {
 
           <Name textColor="text-teal-600" />
 
-          <div className="text-center p-10">
+          <div className="relative text-center p-10">
             <TitleSection
               titlesNames={TitlesNames}
               updateTitle={updateTitleIndex}
               titleIndex={TitleIndex}
+              colors={Object.values(HueVariants).map(
+                (value) => value["--primary"]
+              )}
             />
 
             <div className="relative w-full h-40 max-w-lg mx-auto mt-5">
