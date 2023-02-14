@@ -11,7 +11,7 @@ function TitleSection({ titlesNames, titleIndex, updateTitle, colors }) {
       ease: "easeInOut",
       duration: 0.1,
     });
-  }, [titleIndex]);
+  }, [titleIndex, motionIndex]);
 
   return (
     <motion.div
