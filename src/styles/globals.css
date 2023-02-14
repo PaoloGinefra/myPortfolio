@@ -3,10 +3,6 @@
 @tailwind utilities;
 
 :root {
-  --primary-hue: 175;
-  --primary-sat: 84%;
-  --primay-light: 40%;
-
   --primary: hsl(var(--primary-hue), var(--primary-sat), var(--primay-light));
   --primary-darkened: hsl(calc(var(--primary-hue) - 10), var(--primary-sat), var(--primay-light));
 }
@@ -42,4 +38,14 @@ body {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary-darkened);
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
