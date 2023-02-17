@@ -73,8 +73,8 @@ export default function Home({ projects, tagsPerName }) {
 
           <Name textColor="text-teal-600" />
 
-          <div className="absolute w-full top-0 -z-10 flex justify-center">
-            <div className="bg-blue-700">
+          <div className="relative w-full top-0 -z-20 flex justify-center">
+            <div className="">
               <P5Test />
             </div>
           </div>

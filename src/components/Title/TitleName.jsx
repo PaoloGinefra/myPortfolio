@@ -44,7 +44,11 @@ const getStyle = (
 
   const boxShadow = hovered ? "0 0px 20px " + color : "0 10px 0px " + color;
 
-  const background_color = parentHovered ? "black" : "rgba(0, 0, 0, 0)";
+  const background_color = parentHovered
+    ? "black"
+    : index == titleIndex
+    ? "black"
+    : "rgba(0, 0, 0, 0)";
 
   const txtColor = parentHovered
     ? "white"
@@ -61,7 +65,7 @@ const getStyle = (
     y,
     scale,
     opacity,
-    "background-color": background_color,
+    backgroundColor: background_color,
     border: parentHovered
       ? "solid 1px"
       : index == titleIndex
