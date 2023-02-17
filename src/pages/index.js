@@ -17,6 +17,7 @@ import { getHueVariants } from "@/utils/ColorChanger";
 import { motion } from "framer-motion";
 
 import Titles from "public/data/Titles";
+import P5Test from "@/P5/p5Test";
 
 const TitlesNames = Object.keys(Titles);
 const TitlesData = Object.values(Titles);
@@ -67,10 +68,16 @@ export default function Home({ projects, tagsPerName }) {
         animate={TitlesNames[TitleIndex]}
         variants={HueVariants}
       >
-        <section className="mb-20">
+        <section className="relative mb-20">
           <NavBar />
 
           <Name textColor="text-teal-600" />
+
+          <div className="absolute w-full top-0 -z-10 flex justify-center">
+            <div className="bg-blue-700">
+              <P5Test />
+            </div>
+          </div>
 
           <div className="relative text-center p-10">
             <TitleSection
