@@ -177,6 +177,10 @@ function ProjectSection({
           SelectedTags={SelectedTags}
         />
 
+        <p className="mx-auto text-center text-gray-400 italic">
+          Click on a tool or a tag to slect/deselct it
+        </p>
+
         <Divider />
 
         <VerticalTimeline>{projectsToRender()}</VerticalTimeline>
