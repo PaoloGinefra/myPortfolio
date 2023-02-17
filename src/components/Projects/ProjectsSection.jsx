@@ -148,7 +148,7 @@ function ProjectSection({
     <>
       <section className="text-white">
         <div>
-          <h3 className="text-4xl py-1 text-center pt-10 font-bold mb-5">
+          <h3 className="text-4xl py-1 text-center pt-1 font-bold mb-5">
             Projects
           </h3>
           <p className="text-md py-2 leading-8 text-gray-400">

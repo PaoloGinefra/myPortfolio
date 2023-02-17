@@ -36,11 +36,7 @@ const getStyle = (
 
   const opacity = parentHovered ? scale : index == titleIndex ? 1 : 0;
 
-  const boxShadow = hovered
-    ? "0 0px 10px " + color
-    : parentHovered
-    ? "0 10px 0px " + color
-    : "0px 0px 0px" + color;
+  const boxShadow = hovered ? "0 0px 10px " + color : "0 10px 0px " + color;
 
   return {
     boxShadow,
