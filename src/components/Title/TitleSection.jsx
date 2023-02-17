@@ -15,7 +15,7 @@ function TitleSection({ titlesNames, titleIndex, updateTitle, colors }) {
 
   return (
     <motion.div
-      className="relative group mx-auto h-28 w-full"
+      className="relative group mx-auto h-28 w-full mb-10"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

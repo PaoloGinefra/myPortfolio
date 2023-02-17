@@ -30,20 +30,43 @@ const getStyle = (
 
   const x = useTransform(xUnscales, [-1, 1], ["-" + offset, offset]);
 
+  const y = useTransform(delta, (latest) =>
+    parentHovered
+      ? 0
+      : 18 * (Math.abs(Math.abs(latest)) + (latest > 0 ? -0.5 : 0))
+  );
+
   const scale = useTransform(delta, (latest) =>
     parentHovered ? Math.pow(Math.cos((latest / period) * 2 * Math.PI), 2) : 0.9
   );
 
-  const opacity = parentHovered ? scale : index == titleIndex ? 1 : 0;
+  const opacity = parentHovered ? scale : 1;
 
-  const boxShadow = hovered ? "0 0px 10px " + color : "0 10px 0px " + color;
+  const boxShadow = hovered ? "0 0px 20px " + color : "0 10px 0px " + color;
+
+  const background_color = parentHovered ? "black" : "rgba(0, 0, 0, 0)";
+
+  const txtColor = parentHovered
+    ? "white"
+    : index == titleIndex
+    ? "white"
+    : "rgba(0,0,0,0)";
+
+  const border = parentHovered ? "solid" : "";
 
   return {
     boxShadow,
-    color: hovered ? color : "white",
+    color: txtColor,
     x,
+    y,
     scale,
     opacity,
+    "background-color": background_color,
+    border: parentHovered
+      ? "solid 1px"
+      : index == titleIndex
+      ? "solid 1px"
+      : "solid 0px",
   };
 };
 
@@ -66,7 +89,7 @@ function TitleName({
     >
       <motion.div
         onClick={() => updateTitle(delta)}
-        className="text-2xl text-center md:text-3xl w-full px-3 bg-black rounded-2xl transition duration-500"
+        className="text-3xl text-center w-[18vw] px-3 pt-1 bg-black rounded-2xl transition duration-500 border"
         style={getStyle(
           index,
           motionIndex,
@@ -76,7 +99,11 @@ function TitleName({
           parentHovered,
           titleIndex
         )}
-        onMouseEnter={() => setIsHovered(true)}
+        onMouseEnter={() =>
+          titleIndex == motionIndex.get()
+            ? setIsHovered(true)
+            : setIsHovered(false)
+        }
         onMouseLeave={() => setIsHovered(false)}
       >
         {title}
