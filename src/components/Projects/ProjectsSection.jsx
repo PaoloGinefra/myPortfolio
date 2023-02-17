@@ -148,7 +148,7 @@ function ProjectSection({
     <>
       <section className="text-white">
         <div>
-          <h3 className="text-4xl py-1 text-center pt-10 font-bold mb-5">
+          <h3 className="text-4xl py-1 text-center pt-1 font-bold mb-5">
             Projects
           </h3>
           <p className="text-md py-2 leading-8 text-gray-400">
@@ -176,6 +176,10 @@ function ProjectSection({
           toggleSelectTag={toggleSelectTag}
           SelectedTags={SelectedTags}
         />
+
+        <p className="mx-auto text-center text-gray-400 italic">
+          Click on a tool or a tag to slect/deselct it
+        </p>
 
         <Divider />
 

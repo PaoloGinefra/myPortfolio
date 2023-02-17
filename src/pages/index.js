@@ -1,5 +1,4 @@
 import Head from "next/head";
-import deved from "../../public/dev-ed-wave.png";
 import NavBar from "@/components/NavBar";
 import Name from "@/components/Name";
 import TitleDescription from "@/components/Title/TitleDescription";
@@ -8,6 +7,7 @@ import Avatar from "@/components/Avatar";
 import ProjectSection from "@/components/Projects/ProjectsSection";
 import ProjectModal from "@/components/Projects/ProjectModal/ProjectModal";
 import TitleSection from "@/components/Title/TitleSection";
+import Divider from "@/components/utils/Divider";
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
@@ -67,7 +67,7 @@ export default function Home({ projects, tagsPerName }) {
         animate={TitlesNames[TitleIndex]}
         variants={HueVariants}
       >
-        <section className=" min-h-screen mb-10">
+        <section className="mb-20">
           <NavBar />
 
           <Name textColor="text-teal-600" />
@@ -98,6 +98,8 @@ export default function Home({ projects, tagsPerName }) {
           </div>
           <IconLinks />
         </section>
+
+        <Divider />
 
         <ProjectSection
           projects={projects}

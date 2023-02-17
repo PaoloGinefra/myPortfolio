@@ -23,7 +23,7 @@ function Container({ children, url }) {
 
 function IconLinks() {
   return (
-    <div className="text-5xl flex justify-center gap-16 pb-2 text-gray-200 flex-wrap">
+    <div className="text-5xl flex justify-center gap-16 text-gray-200 flex-wrap">
       <Container url="https://github.com/PaoloGinefra">
         <AiFillGithub />
       </Container>
