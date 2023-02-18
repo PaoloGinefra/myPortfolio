@@ -64,7 +64,7 @@ export default function Home({ projects, tagsPerName }) {
       </Head>
 
       <motion.main
-        className="relative bg-black px-10 md:px-20 lg:px-40 z-10"
+        className="relative bg-black px-10 md:px-20 lg:px-40 z-10 select-none"
         animate={TitlesNames[TitleIndex]}
         variants={HueVariants}
       >
