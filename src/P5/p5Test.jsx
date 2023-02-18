@@ -33,12 +33,12 @@ let Masses = [];
 let Links = [];
 let tails = [];
 
-function getScreenPos(pos) {
-  return [pos.x + width / 2, pos.y + width / 2];
+function getScreenPos(p5, pos) {
+  return [pos.x + p5.width / 2, pos.y + width / 2];
 }
 
-function getWorldPos(screenPos) {
-  return [screenPos.x - width / 2, screenPos.y - width / 2];
+function getWorldPos(p5, screenPos) {
+  return [screenPos.x - p5.width / 2, screenPos.y - width / 2];
 }
 
 function P5Test({ props }) {
@@ -52,7 +52,7 @@ function P5Test({ props }) {
     }
 
     draw(p5) {
-      const [x, y] = getScreenPos(this.position);
+      const [x, y] = getScreenPos(p5, this.position);
       p5.noFill();
       p5.strokeWeight(5);
       p5.stroke(200);
@@ -73,12 +73,14 @@ function P5Test({ props }) {
         this.mB.position
       ).normalize();
       const [x1, y1] = getScreenPos(
+        p5,
         p5.constructor.Vector.add(
           this.mA.position,
           dir.copy().mult(-this.mA.radius)
         )
       );
       const [x2, y2] = getScreenPos(
+        p5,
         p5.constructor.Vector.add(
           this.mB.position,
           dir.copy().mult(this.mB.radius)
@@ -142,7 +144,7 @@ function P5Test({ props }) {
 
   function IK(p5) {
     console.log(p5.createVector(p5.mouseX, p5.mouseY));
-    const [tx, ty] = getWorldPos(p5.createVector(p5.mouseX, p5.mouseY));
+    const [tx, ty] = getWorldPos(p5, p5.createVector(p5.mouseX, p5.mouseY));
     const target = p5.createVector(tx, ty);
 
     for (let i = 1; i < Masses.length; i++) {
@@ -235,12 +237,12 @@ function P5Test({ props }) {
       p5.fill(255);
       p5.beginShape();
       for (let i = 0; i < tails.length; i++) {
-        const [x1, y1] = getScreenPos(tails[i].p1);
+        const [x1, y1] = getScreenPos(p5, tails[i].p1);
         p5.curveVertex(x1, y1);
       }
 
       for (let i = tails.length - 1; i >= 0; i--) {
-        const [x2, y2] = getScreenPos(tails[i].p2);
+        const [x2, y2] = getScreenPos(p5, tails[i].p2);
 
         p5.curveVertex(x2, y2);
       }
@@ -251,6 +253,10 @@ function P5Test({ props }) {
     Masses.forEach((mass) => mass.draw(p5));
   };
 
-  return <Sketch setup={setup} draw={draw} />;
+  const windowResized = (p5) => {
+    p5.resizeCanvas(Math.min(p5.windowWidth, width), width);
+  };
+
+  return <Sketch setup={setup} draw={draw} windowResized={windowResized} />;
 }
 export default P5Test;
