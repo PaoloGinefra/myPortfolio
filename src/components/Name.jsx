@@ -6,7 +6,7 @@ const Name = ({ textColor }) => {
       <text
         y="50%"
         x="50%"
-        text-anchor="middle"
+        textAnchor="middle"
         fill="var(--primary)"
         stroke="var(--primary-darkened)"
         strokeWidth={0}
