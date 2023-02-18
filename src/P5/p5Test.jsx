@@ -6,25 +6,12 @@ const Sketch = dynamic(() => import("react-p5").then((mod) => mod.default), {
   ssr: false,
 });
 
-let x = 50;
-let y = 50;
-
-let width = 600;
-let padding = 30;
-let maxLen = (width - padding) / 6;
-
-const lengths = [maxLen, maxLen, maxLen];
-const masses = [
-  Infinity,
-  Math.random() * 0.1,
-  Math.random() * 0.1,
-  Math.random() * 0.1,
-];
-const angles = [
-  Math.random() * Math.PI * 2,
-  Math.random() * Math.PI * 2,
-  Math.random() * Math.PI * 2,
-];
+const maxMasses = 4;
+let nMasses = Math.floor(Math.random() * (maxMasses - 1)) + 2;
+const width = 600;
+const padding = 30;
+let maxLen = (width - padding) / (2 * nMasses);
+const MassRandomRadius = 0.1;
 
 const dt = 0.15;
 const g = 3;
@@ -33,6 +20,10 @@ const subSemples = 10;
 const nTails = 500;
 
 let velNormScale = 0.3;
+
+let masses = [Infinity];
+let angles = [];
+let lengths = [];
 
 let Masses = [];
 let Links = [];
@@ -51,6 +42,7 @@ function P5Test({ props }) {
       this.position = position;
       this.prevPosition = position.copy();
       this.velocity = velocity;
+      this.radius = (100 * Math.pow(this.mass, 0.5)) / 2;
     }
 
     draw(p5) {
@@ -58,7 +50,7 @@ function P5Test({ props }) {
       p5.noFill();
       p5.strokeWeight(5);
       p5.stroke(200);
-      p5.circle(x, y, 100 * Math.pow(this.mass, 0.5));
+      p5.circle(x, y, 2 * this.radius);
     }
   }
 
@@ -70,8 +62,22 @@ function P5Test({ props }) {
     }
 
     draw(p5) {
-      const [x1, y1] = getScreenPos(this.mA.position);
-      const [x2, y2] = getScreenPos(this.mB.position);
+      const dir = p5.constructor.Vector.sub(
+        this.mA.position,
+        this.mB.position
+      ).normalize();
+      const [x1, y1] = getScreenPos(
+        p5.constructor.Vector.add(
+          this.mA.position,
+          dir.copy().mult(-this.mA.radius)
+        )
+      );
+      const [x2, y2] = getScreenPos(
+        p5.constructor.Vector.add(
+          this.mB.position,
+          dir.copy().mult(this.mB.radius)
+        )
+      );
       p5.strokeWeight(3);
       p5.stroke(200);
       p5.line(x1, y1, x2, y2);
@@ -99,6 +105,22 @@ function P5Test({ props }) {
 
   const setup = (p5, canvasParentRef) => {
     p5.createCanvas(width, width).parent(canvasParentRef);
+
+    masses = [Infinity];
+    angles = [];
+    lengths = [];
+
+    for (let i = 0; i < nMasses; i++) {
+      masses.push(Math.random() * MassRandomRadius);
+    }
+
+    for (let i = 0; i < nMasses; i++) {
+      angles.push(Math.random() * 2 * Math.PI);
+    }
+
+    for (let i = 0; i < nMasses; i++) {
+      lengths.push(maxLen);
+    }
 
     Masses = [];
     Links = [];

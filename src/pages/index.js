@@ -79,7 +79,7 @@ export default function Home({ projects, tagsPerName }) {
             </div>
           </div>
 
-          <div className="relative text-center p-10">
+          <div className="relative text-center p-10 pt-0">
             <TitleSection
               titlesNames={TitlesNames}
               updateTitle={updateTitleIndex}
