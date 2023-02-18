@@ -114,6 +114,9 @@ export default function Home({ projects, tagsPerName }) {
           openModal={openModal}
           setProject={setSelectedProject}
           currentTitle={TitlesNames[TitleIndex]}
+          currentTitleProjectsDescription={
+            TitlesData[TitleIndex].ProjectsDescription
+          }
         />
 
         <AnimatePresence
