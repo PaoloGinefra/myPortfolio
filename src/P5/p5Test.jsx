@@ -9,9 +9,11 @@ const Sketch = dynamic(() => import("react-p5").then((mod) => mod.default), {
 let x = 50;
 let y = 50;
 
-let width = 500;
+let width = 600;
+let padding = 30;
+let maxLen = (width - padding) / 6;
 
-const lengths = [70, 70, 70];
+const lengths = [maxLen, maxLen, maxLen];
 const masses = [
   Infinity,
   Math.random() * 0.1,
@@ -24,11 +26,19 @@ const angles = [
   Math.random() * Math.PI * 2,
 ];
 
-const dt = 0.1;
+const dt = 0.15;
 const g = 3;
-const subSemples = 5;
+const subSemples = 10;
 
 const nTails = 500;
+
+let velNormScale = 0.3;
+
+let Masses = [];
+let Links = [];
+let tails = [];
+
+let theShader;
 
 function getScreenPos(pos) {
   return [pos.x + width / 2, pos.y + width / 2];
@@ -45,6 +55,9 @@ function P5Test({ props }) {
 
     draw(p5) {
       const [x, y] = getScreenPos(this.position);
+      p5.noFill();
+      p5.strokeWeight(5);
+      p5.stroke(200);
       p5.circle(x, y, 100 * Math.pow(this.mass, 0.5));
     }
   }
@@ -59,6 +72,8 @@ function P5Test({ props }) {
     draw(p5) {
       const [x1, y1] = getScreenPos(this.mA.position);
       const [x2, y2] = getScreenPos(this.mB.position);
+      p5.strokeWeight(3);
+      p5.stroke(200);
       p5.line(x1, y1, x2, y2);
     }
 
@@ -81,11 +96,6 @@ function P5Test({ props }) {
       this.mB.position.add(dp_mB);
     }
   }
-
-  let Masses = [];
-  let Links = [];
-
-  let tails = [];
 
   const setup = (p5, canvasParentRef) => {
     p5.createCanvas(width, width).parent(canvasParentRef);
@@ -132,18 +142,40 @@ function P5Test({ props }) {
       }
     }
 
-    tails.push(Masses[Masses.length - 1].position.copy());
+    tails.push({
+      p1: p5.constructor.Vector.add(
+        Masses[Masses.length - 1].position,
+        Masses[Masses.length - 1].velocity
+          .copy()
+          .mult(velNormScale / 2)
+          .rotate(p5.HALF_PI)
+      ),
+      p2: p5.constructor.Vector.add(
+        Masses[Masses.length - 1].position,
+        Masses[Masses.length - 1].velocity
+          .copy()
+          .mult(velNormScale / 2)
+          .rotate(-p5.HALF_PI)
+      ),
+    });
 
     if (tails.length > nTails) tails.shift();
 
     Links.forEach((link) => link.draw(p5));
     Masses.forEach((mass) => mass.draw(p5));
 
-    p5.noFill();
+    p5.noStroke();
+    p5.fill(255);
     p5.beginShape();
     for (let i = 0; i < tails.length; i++) {
-      const [x, y] = getScreenPos(tails[i]);
-      p5.vertex(x, y);
+      const [x1, y1] = getScreenPos(tails[i].p1);
+      p5.vertex(x1, y1);
+    }
+
+    for (let i = tails.length - 1; i >= 0; i--) {
+      const [x2, y2] = getScreenPos(tails[i].p2);
+
+      p5.vertex(x2, y2);
     }
     p5.endShape();
   };

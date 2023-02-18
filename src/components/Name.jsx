@@ -2,11 +2,18 @@ import React from "react";
 
 const Name = ({ textColor }) => {
   return (
-    <h2
-      className={`text-center text-5xl py-1 text-[color:var(--primary)] font-medium md:text-6xl`}
-    >
-      Paolo Ginefra
-    </h2>
+    <svg className="w-full text-center text-5xl pt-1 mb-10 text-[color:var(--primary)] font-medium md:text-6xl">
+      <text
+        y="50%"
+        x="50%"
+        text-anchor="middle"
+        fill="var(--primary)"
+        stroke="var(--primary-darkened)"
+        strokeWidth={0}
+      >
+        Paolo Ginefra
+      </text>
+    </svg>
   );
 };
 

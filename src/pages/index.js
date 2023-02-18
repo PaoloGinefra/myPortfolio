@@ -71,9 +71,9 @@ export default function Home({ projects, tagsPerName }) {
         <section className="relative mb-20">
           <NavBar />
 
-          <Name textColor="text-teal-600" />
+          <Name />
 
-          <div className="relative w-full top-0 -z-20 flex justify-center">
+          <div className="absolute w-full top-0 -translate-y-1/2 -z-20 flex justify-center">
             <div className="">
               <P5Test />
             </div>
