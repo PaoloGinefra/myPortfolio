@@ -19,7 +19,8 @@ const subSemples = 10;
 
 const nTails = 500;
 
-let velNormScale = 0.3;
+const velNormScale = 0.2;
+const normMin = 0.03;
 
 let masses = [Infinity];
 let angles = [];
@@ -28,8 +29,6 @@ let lengths = [];
 let Masses = [];
 let Links = [];
 let tails = [];
-
-let theShader;
 
 function getScreenPos(pos) {
   return [pos.x + width / 2, pos.y + width / 2];
@@ -169,22 +168,19 @@ function P5Test({ props }) {
         Masses[Masses.length - 1].position,
         Masses[Masses.length - 1].velocity
           .copy()
-          .mult(velNormScale / 2)
+          .mult((velNormScale + normMin) / 2)
           .rotate(p5.HALF_PI)
       ),
       p2: p5.constructor.Vector.add(
         Masses[Masses.length - 1].position,
         Masses[Masses.length - 1].velocity
           .copy()
-          .mult(velNormScale / 2)
+          .mult((velNormScale + normMin) / 2)
           .rotate(-p5.HALF_PI)
       ),
     });
 
     if (tails.length > nTails) tails.shift();
-
-    Links.forEach((link) => link.draw(p5));
-    Masses.forEach((mass) => mass.draw(p5));
 
     p5.noStroke();
     p5.fill(255);
@@ -200,6 +196,9 @@ function P5Test({ props }) {
       p5.vertex(x2, y2);
     }
     p5.endShape();
+
+    Links.forEach((link) => link.draw(p5));
+    Masses.forEach((mass) => mass.draw(p5));
   };
 
   return <Sketch setup={setup} draw={draw} />;
