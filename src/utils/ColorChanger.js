@@ -20,7 +20,11 @@ export function getHueVariants(names, data) {
 
   names.forEach((name, index) => {
     const [r, g, b] = HSLToRGB(data[index].hue, sat, light);
-    const [rd, gd, bd] = HSLToRGB((data[index].hue - 10) % 360, sat, light);
+    const [rd, gd, bd] = HSLToRGB(
+      (data[index].hue - 10) % 360,
+      sat,
+      light * 0.9
+    );
 
     variants[name] = {
       "--primary": `rgb(${r}, ${g}, ${b})`,

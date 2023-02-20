@@ -42,9 +42,17 @@ const getStyle = (
 
   const opacity = parentHovered ? scale : 1;
 
-  const boxShadow = hovered ? "0 0px 20px " + color : "0 10px 0px " + color;
+  const boxShadow = hovered
+    ? "0 0px 20px " + color
+    : index == titleIndex
+    ? "0 0px 20px " + color
+    : "0 10px 0px " + color;
 
-  const background_color = parentHovered ? "black" : "rgba(0, 0, 0, 0)";
+  const background_color = parentHovered
+    ? "black"
+    : index == titleIndex
+    ? "black"
+    : "rgba(0, 0, 0, 0)";
 
   const txtColor = parentHovered
     ? "white"
@@ -61,11 +69,13 @@ const getStyle = (
     y,
     scale,
     opacity,
-    "background-color": background_color,
+    backgroundColor: background_color,
     border: parentHovered
-      ? "solid 1px"
+      ? hovered
+        ? "solid 3px " + color
+        : "solid 3px white"
       : index == titleIndex
-      ? "solid 1px"
+      ? "solid 3px " + color
       : "solid 0px",
   };
 };
@@ -89,7 +99,7 @@ function TitleName({
     >
       <motion.div
         onClick={() => updateTitle(delta)}
-        className="text-3xl text-center w-[18vw] px-3 pt-1 bg-black rounded-2xl transition duration-500 border"
+        className="text-2xl md:text-3xl text-center w-[210px] md:w-[18vw] px-3 pt-1 bg-black rounded-2xl transition duration-500"
         style={getStyle(
           index,
           motionIndex,

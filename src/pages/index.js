@@ -17,6 +17,7 @@ import { getHueVariants } from "@/utils/ColorChanger";
 import { motion } from "framer-motion";
 
 import Titles from "public/data/Titles";
+import P5Test from "@/P5/p5Test";
 
 const TitlesNames = Object.keys(Titles);
 const TitlesData = Object.values(Titles);
@@ -63,16 +64,22 @@ export default function Home({ projects, tagsPerName }) {
       </Head>
 
       <motion.main
-        className="relative bg-black px-10 md:px-20 lg:px-40 z-10"
+        className="relative bg-black px-10 md:px-20 lg:px-40 z-10 select-none"
         animate={TitlesNames[TitleIndex]}
         variants={HueVariants}
       >
-        <section className="mb-20">
+        <section className="relative mb-20">
           <NavBar />
 
-          <Name textColor="text-teal-600" />
+          <Name />
 
-          <div className="relative text-center p-10">
+          <div className="absolute w-full top-0 -translate-y-1/2 -z-20 flex justify-center">
+            <div className="">
+              <P5Test />
+            </div>
+          </div>
+
+          <div className="relative text-center p-10 pt-0">
             <TitleSection
               titlesNames={TitlesNames}
               updateTitle={updateTitleIndex}
@@ -107,6 +114,9 @@ export default function Home({ projects, tagsPerName }) {
           openModal={openModal}
           setProject={setSelectedProject}
           currentTitle={TitlesNames[TitleIndex]}
+          currentTitleProjectsDescription={
+            TitlesData[TitleIndex].ProjectsDescription
+          }
         />
 
         <AnimatePresence
