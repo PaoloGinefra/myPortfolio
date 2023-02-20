@@ -6,7 +6,7 @@ const Sketch = dynamic(() => import("react-p5").then((mod) => mod.default), {
   ssr: false,
 });
 
-const maxMasses = 8;
+const maxMasses = 5;
 let nMasses = Math.floor(Math.random() * (maxMasses - 1)) + 2;
 const width = 600;
 const padding = 30;
