@@ -48,7 +48,7 @@ function P5Test({ props }) {
       this.position = position;
       this.prevPosition = position.copy();
       this.velocity = velocity;
-      this.radius = (100 * Math.pow(this.mass, 0.5)) / 2;
+      this.radius = mass == Infinity ? 0 : (100 * Math.pow(this.mass, 0.5)) / 2;
     }
 
     draw(p5) {
@@ -143,7 +143,6 @@ function P5Test({ props }) {
   }
 
   function IK(p5) {
-    console.log(p5.createVector(p5.mouseX, p5.mouseY));
     const [tx, ty] = getWorldPos(p5, p5.createVector(p5.mouseX, p5.mouseY));
     const target = p5.createVector(tx, ty);
 
