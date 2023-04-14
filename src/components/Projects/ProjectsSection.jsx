@@ -152,7 +152,7 @@ function ProjectSection({
           <h3 className="text-4xl py-1 text-center pt-1 font-bold mb-5">
             Projects
           </h3>
-          <p className="text-md py-2 leading-8 text-gray-400">
+          <p className="text-md md:text-xl py-2 max-w-lg mx-auto leading-8 text-gray-400 text-center">
             {currentTitleProjectsDescription}
           </p>
         </div>

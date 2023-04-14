@@ -43,7 +43,7 @@ function ProjectCard({ project, setProject, openModal }) {
       whileTap={"tap"}
       variants={variants}
     >
-      <div className="rounded-2xl w-fit aspect-[4/3] overflow-hidden flex">
+      <div className="rounded-2xl w-full aspect-[4/3] overflow-hidden flex object-cover">
         <Image
           className="w-full object-cover"
           src={project.data.coverSrc}
@@ -56,7 +56,7 @@ function ProjectCard({ project, setProject, openModal }) {
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{project.data.title}</div>
 
-        <p className="text-gray-700 text-base w-fit aspect-video overflow-clip">
+        <p className="text-gray-700 text-base w-fit aspect-video">
           {project.data.cardDescription}
         </p>
       </div>

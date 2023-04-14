@@ -1,8 +1,8 @@
 // next.config.js
-import mdx from '@next/mdx'
-import remarkGFM from 'remark-gfm'
-import remarkFrontmatter from 'remark-frontmatter';
-import rehypeHighlight from 'rehype-highlight';
+import mdx from "@next/mdx";
+import remarkGFM from "remark-gfm";
+import remarkFrontmatter from "remark-frontmatter";
+import rehypeHighlight from "rehype-highlight";
 
 const withMDX = mdx({
   extension: /\.mdx?$/,
@@ -12,23 +12,21 @@ const withMDX = mdx({
     // https://github.com/remarkjs/remark-gfm#install
     remarkPlugins: [remarkFrontmatter, remarkGFM],
     rehypePlugins: [rehypeHighlight],
-    providerImportSource: '@mdx-js/react',
+    providerImportSource: "@mdx-js/react",
     // If you use `MDXProvider`, uncomment the following line.
     // providerImportSource: "@mdx-js/react",
   },
-})
+});
 
 /** @type {import('next').NextConfig} */
 const nextConfig = withMDX({
   // Configure pageExtensions to include md and mdx
-  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
+  pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   // Optionally, add any other Next.js config below
   reactStrictMode: true,
-  images:{
-    domains: [
-      'upload.wikimedia.org'
-    ],
+  images: {
+    domains: ["upload.wikimedia.org", "d1fdloi71mui9q.cloudfront.net"],
   },
-})
+});
 
 export default nextConfig;
