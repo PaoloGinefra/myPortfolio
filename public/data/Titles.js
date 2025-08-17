@@ -29,12 +29,13 @@ const Titles = {
     nisi ut aliquid ex ea commodi consequatur.`,
   },
 
-  Student: {
+  Education: {
     hue: 50,
     Description: `Hi there 👋,
-    I have been a full time student since 2008.
-    I know, impressive right? All jokes aside, I've always teken my education very seriously as a source of knowledge and a way to satify my curiosity.
-    Also it lead to a lot of great friends and life changing experiences.`,
+    I have been a full time student since I was 5 years old (2008).
+    I know, impressive right? All jokes aside, I've always taken my education very seriously as a source of knowledge and a way to satisfy my curiosity.
+    Also it led to great friends and life changing experiences.
+    One day I dream of becoming a ML researcher striving to be a lifelong professional learner`,
     ProjectsDescription: `In this sections you can find some of the projects I have worked on during my studies as well as a summary of my academic achievements.`,
   },
 
