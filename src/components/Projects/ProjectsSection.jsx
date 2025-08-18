@@ -83,12 +83,16 @@ function ProjectSection({
     let empty = true;
 
     const projectsArray = projects.map((project) => {
-      const hasSelectedTool = project.data.tools.some((toolName) => {
-        const id = Tools.find((tool) => tool.Name === toolName).id;
-        return SelectedTools[id];
-      });
+      const hasSelectedTool =
+        project.data.tools.length === 0 ||
+        project.data.tools.some((toolName) => {
+          const id = Tools.find((tool) => tool.Name === toolName).id;
+          return SelectedTools[id];
+        });
 
-      const hasSelectedTag = project.data.tags.some((tag) => SelectedTags[tag]);
+      const hasSelectedTag =
+        project.data.tags.length === 0 ||
+        project.data.tags.some((tag) => SelectedTags[tag]);
 
       const hasSelectedCategory = hasRightCategory(project);
 

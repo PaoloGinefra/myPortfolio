@@ -36,7 +36,7 @@ const Titles = {
     I know, impressive right? All jokes aside, I've always taken my education very seriously as a source of knowledge and a way to satisfy my curiosity.
     Also it led to great friends and life changing experiences.
     One day I dream of becoming a ML researcher striving to be a lifelong professional learner`,
-    ProjectsDescription: `In this sections you can find some of the projects I have worked on during my studies as well as a summary of my academic achievements.`,
+    ProjectsDescription: `In this section you can find some of the highlights of my academic journey.`,
   },
 
   Maker: {
