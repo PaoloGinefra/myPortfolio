@@ -93,7 +93,7 @@ const ProjectModal = ({ post, handleClose }) => {
         animate="visible"
         exit="exit"
       >
-        <div className="prose p-5 overflow-y-auto flex-1 min-h-0">
+        <div className="prose  m-5 p-5 text-justify overflow-y-auto flex-1 min-h-0">
           {postSource && <MDXRemote {...postSource} />}
         </div>
       </motion.div>
