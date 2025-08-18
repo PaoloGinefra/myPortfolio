@@ -31,7 +31,7 @@ const variants = {
 function ProjectCard({ project, setProject, openModal }) {
   return (
     <motion.div
-      className="relative bg-slate-300 max-w-md rounded-2xl overflow-hidden cursor-pointer"
+      className="relative bg-slate-600 max-w-md rounded-2xl overflow-hidden cursor-pointer"
       onClick={() => {
         openModal();
         setProject(project);
@@ -56,7 +56,7 @@ function ProjectCard({ project, setProject, openModal }) {
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{project.data.title}</div>
 
-        <p className="text-gray-700 text-base w-fit aspect-video">
+        <p className="text-base w-fit italic font-thin">
           {project.data.cardDescription}
         </p>
       </div>
